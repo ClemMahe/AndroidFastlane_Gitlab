@@ -2,3 +2,16 @@
 
 # Dockerfile for Android with Fastlane
 
+Based on openjdk:8 with Android SDK 25, Buildtools 25.0.3 and last version of fastlane (with dependencies such as ruby-dev & gem installed). If asked, i could set a static version of fastlane.
+
+# Pull from Docker Cloud
+
+docker pull clemmahe/gitlabandroid
+
+# Run
+
+docker run -i -t clemmahe/gitlabandroid /bin/bash
+
+# Use as base image
+
+FROM clemmahe/gitlabandroid
