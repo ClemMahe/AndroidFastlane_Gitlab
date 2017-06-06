@@ -4,8 +4,6 @@ FROM openjdk:8
 MAINTAINER ClementMAHE <mahe.clem@gmail.com>
 
 ENV ANDROID_SDK_URL="https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip" \
-    ANDROID_BUILD_TOOLS_VERSION=25.0.3 \
-    ANDROID_APIS="android-24,android-25" \
     GRADLE_HOME="/usr/share/gradle" \
     ANDROID_HOME="/opt/android"
 
