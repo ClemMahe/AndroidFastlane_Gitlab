@@ -1,3 +1,4 @@
+
 FROM openjdk:8
 
 MAINTAINER ClementMAHE <mahe.clem@gmail.com>
@@ -13,18 +14,41 @@ ENV PATH $PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/bu
 WORKDIR /opt
 
 RUN dpkg --add-architecture i386 && \
-    apt-get -qq update && \
-    apt-get -qq install -y wget curl maven ant gradle libncurses5:i386 libstdc++6:i386 zlib1g:i386 && \
+  apt-get -qq update && \
+  apt-get -qq install -y wget curl maven ant gradle libncurses5:i386 libstdc++6:i386 zlib1g:i386 && \
 
-    # Installs Android SDK
-    mkdir android && cd android && \
-    wget -O tools.zip ${ANDROID_SDK_URL} && \
-    unzip tools.zip && rm tools.zip && \
-    echo y | android update sdk -a -u -t platform-tools,${ANDROID_APIS},build-tools-${ANDROID_BUILD_TOOLS_VERSION} && \
-    chmod a+x -R $ANDROID_HOME && \
-    chown -R root:root $ANDROID_HOME && \
+  # Installs Android SDK
+  mkdir android && cd android && \
+  wget -O tools.zip ${ANDROID_SDK_URL} && \
+  unzip tools.zip && rm tools.zip && \
 
-    # Clean up
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-    apt-get autoremove -y && \
-    apt-get clean
+  # Copy licenses
+  mkdir -p licenses && \
+  echo 8933bad161af4178b1185d1a37fbf41ea5269c55 > licenses/android-sdk-license && \
+  echo 84831b9409646a918e30573bab4c9c91346d8abd > licenses/android-sdk-preview-license && \
+
+  # Install
+  echo "Installing apk..." && \
+  sdkmanager "platforms;android-25" \
+             "build-tools;25.0.3" \
+             "extras;google;google_play_services" \
+             "extras;google;m2repository" \
+             "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-beta5" \
+             "system-images;android-24;google_apis;armeabi-v7a" \
+             "emulator" --verbose && \
+  echo "Installed apk done" && \
+
+
+  chmod a+x -R $ANDROID_HOME && \
+  chown -R root:root $ANDROID_HOME && \
+
+  #Install fastlane
+  echo y | apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev && \
+  echo y | apt-get install ruby-dev && \
+  echo y | apt-get install rubygems && \
+  sudo echo y | gem install fastlane -NV && \
+
+  # Clean up
+  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+  apt-get autoremove -y && \
+  apt-get clean \
