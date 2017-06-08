@@ -36,14 +36,14 @@ RUN dpkg --add-architecture i386 && \
              "emulator" --verbose && \
   echo "Installed apk done" && \
 
-  # Create AVD
-  echo y | echo y | avdmanager -v create avd -n emulatorApi25 -k "system-images;android-25;google_apis;x86" -g "google_apis" && \
+  # Create AVD - echo no to avoid setting a hardware profile and use the default one
+  echo no | avdmanager -v create avd -n emulatorApi25 -k "system-images;android-25;google_apis;x86" -g "google_apis" && \
 
   chmod a+x -R $ANDROID_HOME && \
   chown -R root:root $ANDROID_HOME && \
 
   #Install fastlane
-  echo y | apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev && \
+  echo n | apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev && \
   echo y | apt-get install ruby-dev && \
   echo y | apt-get install rubygems && \
   sudo echo y | gem install fastlane -NV && \
