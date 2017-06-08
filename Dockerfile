@@ -32,10 +32,12 @@ RUN dpkg --add-architecture i386 && \
              "extras;google;google_play_services" \
              "extras;google;m2repository" \
              "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-beta5" \
-             "system-images;android-24;google_apis;armeabi-v7a" \
+             "system-images;android-25;google_apis;x86" \
              "emulator" --verbose && \
   echo "Installed apk done" && \
 
+  # Create AVD
+  avdmanager -v create avd -n emulatorApi25 -k "system-images;android-25;google_apis;x86" -g "google_apis" && \
 
   chmod a+x -R $ANDROID_HOME && \
   chown -R root:root $ANDROID_HOME && \
