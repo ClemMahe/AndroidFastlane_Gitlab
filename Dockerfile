@@ -37,7 +37,7 @@ RUN dpkg --add-architecture i386 && \
   echo "Installed apk done" && \
 
   # Create AVD - echo no to avoid setting a hardware profile and use the default one
-  echo no | avdmanager -v create avd -n emulatorApi25 -k "system-images;android-25;google_apis;x86" -g "google_apis" && \
+  echo y | echo no | avdmanager -v create avd -n emulatorApi25 -k "system-images;android-25;google_apis;x86" -g "google_apis" && \
 
   chmod a+x -R $ANDROID_HOME && \
   chown -R root:root $ANDROID_HOME && \
