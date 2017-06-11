@@ -36,6 +36,21 @@ RUN dpkg --add-architecture i386 && \
              "emulator" --verbose && \
   echo "Installed apk done" && \
 
+  #Install package emulator dependencies
+  echo y | apt-get install apt-utils binutils cpp cpp-4.9 dh-python dpkg-dev fakeroot g++ g++-4.9 gcc \
+  gcc-4.9 init-system-helpers iso-codes libalgorithm-diff-perl  \
+  libalgorithm-diff-xs-perl libalgorithm-merge-perl libapt-inst1.5 libasan1    \
+  libatomic1 libc-dev-bin libc6-dev libcilkrts5 libcloog-isl4 libdpkg-perl  \
+  libfakeroot libfile-fcntllock-perl libgcc-4.9-dev libgomp1 libisl10 libitm1   \
+  liblsan0 libmpc3 libmpdec2 libmpfr4 libpython3-stdlib libpython3.4-minimal  \
+  libpython3.4-stdlib libquadmath0 libreadline6-dev libssl-doc    \
+  libstdc++-4.9-dev libtimedate-perl libtinfo-dev libtsan0 libubsan0    \
+  libxslt1.1 libyaml-0-2 linux-libc-dev lsb-release make manpages manpages-dev  \
+  patch python-apt python-apt-common python3 python3-apt python3-minimal  \
+  python3.4 python3.4-minimal unattended-upgrades    && \
+
+  echo "Installed packages for emulator done" && \
+
   # Create AVD - echo no to avoid setting a hardware profile and use the default one
   #avdmanager create avd -f -n emulatorApi25 -k "system-images;android-25;google_apis;x86" -g "google_apis" && \
   echo "no" | avdmanager create avd --name "Test-Emulator-API23-Nexus-5-0" --package "system-images;android-25;google_apis;x86" --device "Nexus 5X" --tag "google_apis" --abi "x86"  && \
