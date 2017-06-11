@@ -47,7 +47,14 @@ RUN dpkg --add-architecture i386 && \
   libstdc++-4.9-dev libtimedate-perl libtinfo-dev libtsan0 libubsan0    \
   libxslt1.1 libyaml-0-2 linux-libc-dev lsb-release make manpages manpages-dev  \
   patch python-apt python-apt-common python3 python3-apt python3-minimal  \
-  python3.4 python3.4-minimal unattended-upgrades    && \
+  python3.4 python3.4-minimal unattended-upgrades \
+  #Install suggested
+  libcurl4-doc libcurl3-dbg libidn11-dev libkrb5-dev libldap2-dev librtmp-dev \
+  libssh2-1-dev pkg-config sqlite3-doc libyaml-doc \
+  #Install left
+  git-core libcurl4-openssl-dev libffi-dev libreadline-dev libsqlite3-dev  \
+ libssl-dev libxml2-dev libxslt1-dev libyaml-dev python-software-properties \
+ sqlite3 zlib1g-dev && \
 
   echo "Installed packages for emulator done" && \
 
