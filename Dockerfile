@@ -28,10 +28,13 @@ RUN dpkg --add-architecture i386 && \
   # Install
   echo "Installing apk..." && \
   sdkmanager "platforms;android-25" \
+             "platforms;android-26" \
              "build-tools;25.0.3" \
+             "build-tools;26.0.0" \
              "extras;google;google_play_services" \
              "extras;google;m2repository" \
-             "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-beta5" \
+             "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.1" \
+             "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2" \
              "system-images;android-25;google_apis;x86" \
              "emulator" --verbose && \
 
