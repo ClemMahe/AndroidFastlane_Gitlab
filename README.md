@@ -15,3 +15,7 @@ docker run -i -t clemmahe/dockerfileandroidfastlane /bin/bash
 # Use as base image
 
 FROM clemmahe/dockerfileandroidfastlane
+
+# Emulator
+
+When using this image, an emulator has been created with the following name : emulatorN5XAPI25, based on API25 & on N5X.
