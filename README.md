@@ -6,12 +6,12 @@ Based on openjdk:8 with Android SDK 25, Buildtools 25.0.3 and last version of fa
 
 # Pull from Docker Cloud
 
-docker pull clemmahe/gitlabandroid
+docker pull clemmahe/dockerfileandroidfastlane
 
 # Run
 
-docker run -i -t clemmahe/gitlabandroid /bin/bash
+docker run -i -t clemmahe/dockerfileandroidfastlane /bin/bash
 
 # Use as base image
 
-FROM clemmahe/gitlabandroid
+FROM clemmahe/dockerfileandroidfastlane
