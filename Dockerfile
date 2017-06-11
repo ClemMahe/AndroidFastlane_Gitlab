@@ -34,9 +34,8 @@ RUN dpkg --add-architecture i386 && \
              "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-beta5" \
              "system-images;android-25;google_apis;x86" \
              "emulator" --verbose && \
-  echo "Installed apk done" && \
 
-  #Install package emulator dependencies
+  # Install package emulator dependencies
   echo "Install emulator dependencies" && \
   echo y | apt-get install apt-utils binutils cpp cpp-4.9 dh-python dpkg-dev fakeroot g++ g++-4.9 gcc \
   gcc-4.9 init-system-helpers iso-codes libalgorithm-diff-perl  \
@@ -49,24 +48,22 @@ RUN dpkg --add-architecture i386 && \
   libxslt1.1 libyaml-0-2 linux-libc-dev lsb-release make manpages manpages-dev  \
   patch python-apt python-apt-common python3 python3-apt python3-minimal  \
   python3.4 python3.4-minimal unattended-upgrades \
-  #Install suggested
   libcurl4-doc libcurl3-dbg libidn11-dev libkrb5-dev libldap2-dev librtmp-dev \
   libssh2-1-dev pkg-config sqlite3-doc libyaml-doc \
-  #Install left
   git-core libcurl4-openssl-dev libffi-dev libreadline-dev libsqlite3-dev  \
- libssl-dev libxml2-dev libxslt1-dev libyaml-dev python-software-properties \
- sqlite3 zlib1g-dev && \
+  libssl-dev libxml2-dev libxslt1-dev libyaml-dev python-software-properties \
+  sqlite3 zlib1g-dev && \
 
   echo "OK Installed depedencies for emulator" && \
 
   # Create AVD - echo no to avoid setting a hardware profile and use the default one
-  #avdmanager create avd -f -n emulatorApi25 -k "system-images;android-25;google_apis;x86" -g "google_apis" && \
-  echo "no" | avdmanager create avd --name "Test-Emulator-API23-Nexus-5-0" --package "system-images;android-25;google_apis;x86" --device "Nexus 5X" --tag "google_apis" --abi "x86"  && \
+  echo "no" | avdmanager create avd --name "emulatorN5XAPI25" --package "system-images;android-25;google_apis;x86" --device "Nexus 5X" --tag "google_apis" --abi "x86"  && \
 
+  # Clean
   chmod a+x -R $ANDROID_HOME && \
   chown -R root:root $ANDROID_HOME && \
 
-  #Install fastlane & dependencies if not already installed
+  # Install fastlane & dependencies if not already installed
   echo n | apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev && \
   echo y | apt-get install ruby-dev && \
   echo y | apt-get install rubygems && \
