@@ -2,7 +2,7 @@
 
 # Dockerfile for Android with Fastlane
 
-Based on openjdk:8 with Android SDK 25, Buildtools 25.0.3 and last version of fastlane (with dependencies such as ruby-dev & gem installed). If asked, i could set a static version of fastlane.
+Based on openjdk:8 with Android SDK 25,26, Buildtools 25.0.3,26.0.0 and last version of fastlane (with dependencies such as ruby-dev & gem installed). If asked, i could set a static version of fastlane.
 
 # Pull from Docker Cloud
 
