@@ -37,7 +37,8 @@ RUN dpkg --add-architecture i386 && \
   echo "Installed apk done" && \
 
   # Create AVD - echo no to avoid setting a hardware profile and use the default one
-  avdmanager -v create avd -f -n emulatorApi25 -k "system-images;android-25;google_apis;x86" -g "google_apis" && \
+  #avdmanager create avd -f -n emulatorApi25 -k "system-images;android-25;google_apis;x86" -g "google_apis" && \
+  avdmanager create avd --name "Test-Emulator-API23-Nexus-5-0" --package "ssystem-images;android-25;google_apis;x86" --device "Nexus 5X" --tag "google_apis" --abi "x86"
 
   chmod a+x -R $ANDROID_HOME && \
   chown -R root:root $ANDROID_HOME && \
