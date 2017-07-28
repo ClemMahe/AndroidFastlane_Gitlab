@@ -60,7 +60,7 @@ RUN dpkg --add-architecture i386 && \
   echo "OK Installed depedencies for emulator" && \
 
   # Create AVD - echo no to avoid setting a hardware profile and use the default one
-  echo "no" | avdmanager create avd --name "emulatorN5XAPI25" --package "system-images;android-25;google_apis;x86" --device "Nexus 5X" --tag "google_apis" --abi "x86"  && \
+  #echo "no" | avdmanager create avd --name "emulatorN5XAPI25" --package "system-images;android-25;google_apis;x86" --device "Nexus 5X" --tag "google_apis" --abi "x86"  && \
 
   # Clean
   chmod a+x -R $ANDROID_HOME && \
