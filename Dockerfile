@@ -67,10 +67,10 @@ RUN dpkg --add-architecture i386 && \
   chown -R root:root $ANDROID_HOME && \
 
   # Install fastlane & dependencies if not already installed
-  echo n | apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev && \
-  echo y | apt-get install ruby-dev && \
-  echo y | apt-get install rubygems && \
-  sudo echo y | gem install fastlane -NV && \
+  #echo n | apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev && \
+  #echo y | apt-get install ruby-dev && \
+  #echo y | apt-get install rubygems && \
+  #sudo echo y | gem install fastlane -NV && \
 
   # Clean up
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
