@@ -38,6 +38,25 @@ RUN dpkg --add-architecture i386 && \
              "system-images;android-25;google_apis;x86" \
              "emulator" --verbose && \
 
+  # Install package emulator dependencies
+  echo "Install emulator dependencies" && \
+  
+  echo y | apt-get install apt-transport-https apt-utils binutils cpp dh-python dpkg-dev fakeroot g++ gcc \
+  init-system-helpers iso-codes libalgorithm-diff-perl  \
+  libalgorithm-diff-xs-perl libalgorithm-merge-perl libapt-inst1.6 libasan1    \
+  libatomic1 libc-dev-bin libc6-dev libcilkrts5 libcloog-isl4 libdpkg-perl  \
+  libfakeroot libfile-fcntllock-perl libgcc-z-dev libgomp1 libisl10 libitm1   \
+  liblsan0 libmpc3 libmpdec2 libmpfr4 libpython3-stdlib libpython3.4-minimal  \
+  libpython3.4-stdlib libquadmath0 libreadline6-dev libssl-doc    \
+  libstdc++-4.9-dev libtimedate-perl libtinfo-dev libtsan0 libubsan0    \
+  libxslt1.1 libyaml-0-2 linux-libc-dev lsb-release make manpages manpages-dev  \
+  patch python-apt python-apt-common python3 python3-apt python3-minimal  \
+  python3.5 python3.5-minimal unattended-upgrades \
+  libcurl4-doc libcurl3-dbg libidn11-dev libkrb5-dev libldap2-dev librtmp-dev \
+  libssh2-1-dev pkg-config sqlite3-doc libyaml-doc \
+  git-core libcurl4-openssl-dev libffi-dev libreadline-dev libsqlite3-dev  \
+  libssl-dev libxml2-dev libxslt1-dev libyaml-dev software-properties-common \
+  sqlite3 zlib1g-dev && \
 
   # Clean up
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
