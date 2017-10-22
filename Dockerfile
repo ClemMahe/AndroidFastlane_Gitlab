@@ -46,7 +46,7 @@ RUN dpkg --add-architecture i386 && \
   libalgorithm-diff-xs-perl libalgorithm-merge-perl libapt-inst1.6 libasan1    \
   libatomic1 libc-dev-bin libc6-dev libcilkrts5 libcloog-isl4 libdpkg-perl  \
   libfakeroot libfile-fcntllock-perl libgcc-4.9-dev libgomp1 libisl10 libitm1   \
-  liblsan0 libmpc3 libmpdec2 libmpfr4 libpython3-stdlib libpython3.4-minimal  \
+  liblsan0 libmpc3 libmpdec2 libmpfr4 libpython3-stdlib libpython3.5-minimal  \
   libpython3.4-stdlib libquadmath0 libreadline6-dev libssl-doc    \
   libstdc++-4.9-dev libtimedate-perl libtinfo-dev libtsan0 libubsan0    \
   libxslt1.1 libyaml-0-2 linux-libc-dev lsb-release make manpages manpages-dev  \
