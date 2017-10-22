@@ -40,8 +40,9 @@ RUN dpkg --add-architecture i386 && \
 
   # Install package emulator dependencies
   echo "Install emulator dependencies" && \
-  echo y | apt-get install apt-transport-https apt-utils binutils cpp cpp-4.9 dh-python dpkg-dev fakeroot g++ g++-4.9 gcc \
-  gcc-4.9 init-system-helpers iso-codes libalgorithm-diff-perl  \
+  
+  echo y | apt-get install apt-transport-https apt-utils binutils cpp dh-python dpkg-dev fakeroot g++ gcc \
+  init-system-helpers iso-codes libalgorithm-diff-perl  \
   libalgorithm-diff-xs-perl libalgorithm-merge-perl libapt-inst1.5 libasan1    \
   libatomic1 libc-dev-bin libc6-dev libcilkrts5 libcloog-isl4 libdpkg-perl  \
   libfakeroot libfile-fcntllock-perl libgcc-4.9-dev libgomp1 libisl10 libitm1   \
