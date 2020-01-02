@@ -1,3 +1,13 @@
+# Obsolete
+Nice example shared here :
+https://about.gitlab.com/blog/2019/01/28/android-publishing-with-gitlab-and-fastlane/
+https://gitlab.com/gitlab-org/project-templates/android
+
+### Note :
+02/01/2020: Latest fastlane version not compatible with ruby<2.4, either use higher version of ruby or don't commit Gemfile.lock.
+
+
+
 [![Codefresh build status]( https://g.codefresh.io/api/badges/build?repoOwner=ClemMahe&repoName=DockerfileAndroidFastlane&branch=master&pipelineName=DockerfileAndroidFastlane&accountName=clemmahe&type=cf-1)]( https://g.codefresh.io/repositories/ClemMahe/DockerfileAndroidFastlane/builds?filter=trigger:build;branch:master;service:59371c999d2f2000010a45aa~DockerfileAndroidFastlane)
 
 # Dockerfile for Android with Fastlane
