@@ -1,6 +1,7 @@
 # Obsolete
-Nice example shared here :
+Nice example from 2019 shared here :
 https://about.gitlab.com/blog/2019/01/28/android-publishing-with-gitlab-and-fastlane/
+
 https://gitlab.com/gitlab-org/project-templates/android
 
 ### Note :
