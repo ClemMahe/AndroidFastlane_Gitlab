@@ -7,4 +7,7 @@ https://about.gitlab.com/blog/2019/01/28/android-publishing-with-gitlab-and-fast
 
 # Screenshots
 
+![Alt text](/screenshots/goingout_pipeline.png?raw=true "Pipeline")
+
+
 
