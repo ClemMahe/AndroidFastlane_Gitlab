@@ -5,6 +5,24 @@ When developing I use an Emulator but I like to be able to get the application o
 This project is just an example of the use I made out of Fastlane+Gitlab, here is the original article I used as base :
 https://about.gitlab.com/blog/2019/01/28/android-publishing-with-gitlab-and-fastlane/
 
+# Installation
+Please refer to https://about.gitlab.com/blog/2019/01/28/android-publishing-with-gitlab-and-fastlane/.
+Once you will have everything created (Gemfile, Gemfile.lock) you may have to change a bit the "Dockerfile" as I did :
+
+Instead of :
+COPY Gemfile.lock .
+COPY Gemfile .
+RUN gem install bundle
+RUN bundle install
+
+I have avoided copy of Gemfile.lock & added the posibility to update fastlane.
+#COPY Gemfile.lock .
+COPY Gemfile .
+RUN gem install bundle
+RUN bundle install
+##force fastlane update
+#RUN bundle update fastlane
+
 # Screenshots
 
 ![Alt text](/screenshots/goingout_pipeline.png?raw=true "Pipeline")
