@@ -9,5 +9,11 @@ https://about.gitlab.com/blog/2019/01/28/android-publishing-with-gitlab-and-fast
 
 ![Alt text](/screenshots/goingout_pipeline.png?raw=true "Pipeline")
 
+It goes throught alpha automatically at each delivery (push), but then you can decide manually in one click to deliver on beta/prod.
+
+![Alt text](/screenshots/goingout_action_alpha.png?raw=true "Pipeline")
+![Alt text](/screenshots/goingout_action_beta.png?raw=true "Pipeline")
+![Alt text](/screenshots/goingout_action_prod.png?raw=true "Pipeline")
+
 
 
