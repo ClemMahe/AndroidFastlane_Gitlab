@@ -9,20 +9,20 @@ https://about.gitlab.com/blog/2019/01/28/android-publishing-with-gitlab-and-fast
 Please refer to https://about.gitlab.com/blog/2019/01/28/android-publishing-with-gitlab-and-fastlane/.
 Once you will have everything created (Gemfile, Gemfile.lock) you may have to change a bit the "Dockerfile" as I did :
 
-Instead of :
-COPY Gemfile.lock .
-COPY Gemfile .
-RUN gem install bundle
-RUN bundle install
-
-I have avoided copy of Gemfile.lock & added the posibility to update fastlane.
-#COPY Gemfile.lock .
-COPY Gemfile .
-RUN gem install bundle
-RUN bundle install
-##force fastlane update
-#RUN bundle update fastlane
-
+Instead of :<br/>
+COPY Gemfile.lock .<br/>
+COPY Gemfile .<br/>
+RUN gem install bundle<br/>
+RUN bundle install<br/>
+<br/>
+I have avoided copy of Gemfile.lock & added the posibility to update fastlane.<br/>
+#COPY Gemfile.lock .<br/>
+COPY Gemfile .<br/>
+RUN gem install bundle<br/>
+RUN bundle install<br/>
+##force fastlane update<br/>
+#RUN bundle update fastlane<br/>
+<br/>
 # Screenshots
 
 ![Alt text](/screenshots/goingout_pipeline.png?raw=true "Pipeline")
