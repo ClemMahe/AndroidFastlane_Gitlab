@@ -1,53 +1,38 @@
 
-FROM openjdk:8
+# This Dockerfile creates a static build image for CI
+FROM openjdk:8-jdk
 
-MAINTAINER ClementMAHE <mahe.clem@gmail.com>
+# Just matched `app/build.gradle`
+ENV ANDROID_COMPILE_SDK "29"
+# Just matched `app/build.gradle`
+ENV ANDROID_BUILD_TOOLS "29.0.2"
+# Version from https://developer.android.com/studio/releases/sdk-tools
+ENV ANDROID_SDK_TOOLS "24.4.1"
 
-ENV ANDROID_SDK_URL="https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip" \
-    GRADLE_HOME="/usr/share/gradle" \
-    ANDROID_HOME="/opt/android"
+ENV ANDROID_HOME /android-sdk-linux
+ENV PATH="${PATH}:/android-sdk-linux/platform-tools/"
 
-ENV PATH $PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/$ANDROID_BUILD_TOOLS_VERSION:$GRADLE_HOME/bin
+# install OS packages
+RUN apt-get --quiet update --yes
+RUN apt-get --quiet install --yes wget tar unzip lib32stdc++6 lib32z1 build-essential ruby ruby-dev
+# We use this for xxd hex->binary
+RUN apt-get --quiet install --yes vim-common
+# install Android SDK
+RUN wget --quiet --output-document=android-sdk.tgz https://dl.google.com/android/android-sdk_r${ANDROID_SDK_TOOLS}-linux.tgz
+RUN tar --extract --gzip --file=android-sdk.tgz
+RUN echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter android-${ANDROID_COMPILE_SDK}
+RUN echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter platform-tools
+RUN echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter build-tools-${ANDROID_BUILD_TOOLS}
+RUN echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-android-m2repository
+RUN echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-google_play_services
+RUN echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-m2repository
 
-WORKDIR /opt
+# install FastLane
+#COPY Gemfile.lock .
+COPY Gemfile .
 
-RUN dpkg --add-architecture i386 && \
-  apt-get -qq update && \
-  apt-get -qq install -y wget curl maven ant gradle libncurses5:i386 libstdc++6:i386 zlib1g:i386 && \
+RUN gem install bundle
+RUN bundle install
 
-  # Installs Android SDK
-  mkdir android && cd android && \
-  wget -O tools.zip ${ANDROID_SDK_URL} && \
-  unzip tools.zip && rm tools.zip && \
-
-  # Copy licenses
-  mkdir -p licenses && \
-  echo 8933bad161af4178b1185d1a37fbf41ea5269c55 > licenses/android-sdk-license && \
-  echo 84831b9409646a918e30573bab4c9c91346d8abd > licenses/android-sdk-preview-license && \
-
-  # Install
-  echo "Installing apk..." && \
-  sdkmanager "platforms;android-25" \
-             "platforms;android-26" \
-             "build-tools;25.0.3" \
-             "build-tools;26.0.0" \
-             "extras;google;google_play_services" \
-             "extras;google;m2repository" \
-             "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.1" \
-             "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2" \
-             "system-images;android-25;google_apis;x86" \
-             "emulator" --verbose && \
-
-  # Install package emulator dependencies
-  echo "Install emulator dependencies" && \
-
-  #Update & install https transport
-  echo y | apt-get update && apt-get install -y apt-transport-https && \
-  
-  #Install dependencies
- 
-
-  # Clean up
-  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-  apt-get autoremove -y && \
-  apt-get clean \
+# force fastlane update
+#RUN bundle update fastlane
