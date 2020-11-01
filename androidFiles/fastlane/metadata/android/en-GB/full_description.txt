@@ -1,0 +1,4 @@
+You want to have a drink after work ? You don't know who will join you ? Just ask your friends. With this application you can :
+- Ask your friends if they are interested in having a drink, going to the restaurant.
+- Tell your friends that you are already having a drink and that they can join you. 
+- Manage groups of friends (coworkers, friends...)
